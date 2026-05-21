@@ -1,0 +1,2 @@
+# Stop the pack lock from getting pushed.
+nvim-pack-lock.json
