@@ -8,4 +8,7 @@ vim.pack.add({
 
 	-- Mini.nvim
 	'https://github.com/nvim-mini/mini.nvim',
+
+	-- LSP Config
+	'https://github.com/neovim/nvim-lspconfig',
 })
