@@ -1,3 +1,3 @@
 -- Entry point for Neovim configuration
-require ("config")
-require ("plugins")
+require("config")
+require("plugins")
