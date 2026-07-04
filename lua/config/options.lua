@@ -6,6 +6,7 @@ vim.o.wrap = false
 vim.o.scrolloff = 10 -- Keep 10 lines above or below cursor
 
 -- Indentation
+vim.o.expandtab = false -- Tabs not spaces
 vim.o.tabstop = 4	-- Tab width
 vim.o.shiftwidth = 4	-- Indent width
 vim.o.smartindent = true

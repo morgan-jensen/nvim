@@ -11,5 +11,6 @@ vim.pack.add({
 
 	-- LSP Config
 	'https://github.com/neovim/nvim-lspconfig',
-	'https://github.com/mason-org/mason.nvim'
+	'https://github.com/mason-org/mason.nvim',
+	'https://github.com/folke/lazydev.nvim',
 })

@@ -1,24 +1,27 @@
 -- Configuration for nvim-lspconfig
 -- :help lspconfig-all
 
--- List of LSP servers can be found at https://microsoft.github.io/language-server-protocol/implementors/servers/
+-- Fix issues with lsp not knowing vim
+require('lazydev').setup({})
 
--- C++ (clangd)
-if not vim.lsp.is_enabled('clangd') then
-	vim.lsp.enable('clangd', {})
-end
+vim.lsp.enable('clangd')
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('svelte')
 
--- Markdown (marksman)
-if not vim.lsp.is_enabled('marksman') then
-	vim.lsp.enable('marksman', {})
-end
+-- Format on save
+vim.api.nvim_create_autocmd('LspAttach', {
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if not client then return end
 
--- HTML (vscode lang server)
-if not vim.lsp.is_enabled('html') then
-	vim.lsp.enable('html', {})
-end
-
--- Vue (vue language server)
-if not vim.lsp.is_enabled('vue_ls') then
-	vim.lsp.enable('vue_ls', {})
-end
+		if client.supports_method('textDocument/formatting') then
+			-- format the buffer on save
+			vim.api.nvim_create_autocmd('BufWritePre', {
+				buffer = args.buf,
+				callback = function()
+					vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+				end,
+			})
+		end
+	end,
+})

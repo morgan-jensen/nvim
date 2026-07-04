@@ -8,4 +8,3 @@ vim.keymap.set('n', '<leader>b', ':Telescope buffers<CR>', { silent = true })
 
 -- Remove highlighting from search
 vim.keymap.set('n', '<leader>h', ":noh<CR>", { silent = true })
-
